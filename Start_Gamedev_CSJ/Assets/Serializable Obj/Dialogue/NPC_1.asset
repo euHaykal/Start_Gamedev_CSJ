@@ -15,4 +15,16 @@ MonoBehaviour:
   actor: {fileID: 0}
   speakerSprite: {fileID: 0}
   sentence: 
-  dialogue: []
+  dialogues:
+  - actorName: Claudete
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "Ol\xE1, tudo bem?"
+      english: 
+      spanish: 
+  - actorName: Claudete
+    profile: {fileID: 0}
+    sentence:
+      portuguese: "O dia est\xE1 lindo, n\xE3o?!"
+      english: 
+      spanish: 

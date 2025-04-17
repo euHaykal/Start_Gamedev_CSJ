@@ -19,6 +19,13 @@ public class DialogueControl : MonoBehaviour
     private string[] sentences;
     #endregion
 
+    public static DialogueControl instance;
+
+    private void Awake()  //Chamado antes de todos os Starts() na hierarquia de execução de Scripts
+    {
+        instance = this;  //
+    }
+
     IEnumerator TypeSentence()
     {
         foreach(char letter in sentences[index].ToCharArray())

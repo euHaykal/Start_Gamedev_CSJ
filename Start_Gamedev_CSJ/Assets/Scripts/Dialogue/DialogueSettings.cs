@@ -12,7 +12,7 @@ public class DialogueSettings : ScriptableObject
     public Sprite speakerSprite;  //Imagem de quem fala
     public string sentence;  //Fala do diálogo
 
-    public List<Sentences> dialogue = new List<Sentences>();
+    public List<Sentences> dialogues = new List<Sentences>();
 }
 
 [System.Serializable]
@@ -52,7 +52,7 @@ public class BuilderEditor : Editor
         {
             if(ds.sentence != "")
             {
-                ds.dialogue.Add(s);
+                ds.dialogues.Add(s);
 
                 ds.speakerSprite = null;
                 ds.sentence = "";
