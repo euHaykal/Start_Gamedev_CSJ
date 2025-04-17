@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Dialogue", menuName = "New Dialogie/Dialogue")]
@@ -15,7 +16,7 @@ public class DialogueSettings : ScriptableObject
 }
 
 [System.Serializable]
-public class Sentences
+public class Sentences  //Armazena as falas
 {
     public string actorName;  //Nome do personagem falante
     public Sprite profile;
@@ -29,3 +30,34 @@ public class Languages
     public string english;
     public string spanish;
 }
+
+#if UNITY_EDITOR
+[CustomEditor(typeof(DialogueSettings))]
+public class BuilderEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        DialogueSettings ds = (DialogueSettings)target;
+
+        Languages l = new Languages();
+        l.portuguese = ds.sentence;
+
+        Sentences s = new Sentences();
+        s.profile = ds.speakerSprite;
+        s.sentence = l;
+
+        if(GUILayout.Button("Create Dialogue"))
+        {
+            if(ds.sentence != "")
+            {
+                ds.dialogue.Add(s);
+
+                ds.speakerSprite = null;
+                ds.sentence = "";
+            }
+        }
+    }
+}
+#endif
