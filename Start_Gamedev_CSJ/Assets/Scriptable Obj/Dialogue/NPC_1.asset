@@ -20,11 +20,11 @@ MonoBehaviour:
     profile: {fileID: 0}
     sentence:
       portuguese: "Ol\xE1, tudo bem?"
-      english: 
-      spanish: 
+      english: Hello, how are you?
+      spanish: "Hola, \xBFc\xF3mo est\xE1s?"
   - actorName: Claudete
     profile: {fileID: 0}
     sentence:
       portuguese: "O dia est\xE1 lindo, n\xE3o?!"
-      english: 
-      spanish: 
+      english: This's a beautiful day, right?
+      spanish: "\xA1El d\xEDa es hermoso, \xBFno?!"
