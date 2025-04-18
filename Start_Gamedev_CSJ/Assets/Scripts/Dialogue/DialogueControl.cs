@@ -28,6 +28,8 @@ public class DialogueControl : MonoBehaviour
     private bool isShowing;  //Se a janela está visível
     private int index;  //Index das sentenças
     private string[] sentences;
+
+    public bool IsShowing { get => isShowing; set => isShowing = value; }
     #endregion
 
     public static DialogueControl instance;

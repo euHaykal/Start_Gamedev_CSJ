@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -96,7 +96,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -322,7 +322,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shorthair_walk_strip8_0: 2576704447771348901
+      shorthair_walk_strip8_1: 5965016807247118960
+      shorthair_walk_strip8_2: 4357116172556950165
+      shorthair_walk_strip8_3: -7944078779974387099
+      shorthair_walk_strip8_4: 6765956488334207000
+      shorthair_walk_strip8_5: 3541450580793497839
+      shorthair_walk_strip8_6: 4139521679933509792
+      shorthair_walk_strip8_7: -5040366632550688982
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
