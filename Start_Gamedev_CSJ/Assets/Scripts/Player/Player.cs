@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private float initialSpeed;
     private bool _isRunning;
     private bool _isRolling;
+    private bool _isCutting;
     private Vector2 _direction;  //Encapsulamento
 
     public bool isRunning  //Encapsulamento
@@ -22,6 +23,11 @@ public class Player : MonoBehaviour
     {
         get { return _isRolling; }  //Pega o valor da váriável _isRolling
         set { _isRolling = value; }  //Seta o valor da variável isRolling para o mesmo da variável _isRolling
+    }
+    public bool isCutting  //Encapsulamento
+    {
+        get { return _isCutting; } 
+        set { _isCutting = value; }
     }
     public Vector2 direction  //Encapsulamento
     {
@@ -40,6 +46,7 @@ public class Player : MonoBehaviour
         OnInput();
         OnRun();
         OnRolling();
+        OnCutting();
     }
 
     private void FixedUpdate() //Só utiliza para coisas com física
@@ -82,10 +89,25 @@ public class Player : MonoBehaviour
             _isRolling = true;
         }
 
-                if(Input.GetMouseButtonUp(1))
+        if(Input.GetMouseButtonUp(1))
         {
             speed = initialSpeed;
             _isRolling = false;
+        }
+    }
+
+    void OnCutting()
+    {
+        if(Input.GetMouseButtonDown(0))  
+        {
+            speed = 0;
+            _isCutting = true;
+        }
+
+        if(Input.GetMouseButtonUp(0)) 
+        {
+            speed = initialSpeed;
+            _isCutting = false;
         }
     }
 
