@@ -19,7 +19,7 @@ public class NPC_Dialogue : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E) && playerHit)
+        if (Input.GetKeyDown(KeyCode.E) && playerHit)
         {
             DialogueControl.instance.Speech(sentences.ToArray());
         }
@@ -27,9 +27,9 @@ public class NPC_Dialogue : MonoBehaviour
 
     void GetNPCInfo()
     {
-        for(int i = 0; i < dialogue.dialogues.Count; i++)
+        for (int i = 0; i < dialogue.dialogues.Count; i++)
         {
-            switch(DialogueControl.instance.language)
+            switch (DialogueControl.instance.language)
             {
                 case DialogueControl.idiom.pt:
                     sentences.Add(dialogue.dialogues[i].sentence.portuguese);
@@ -55,7 +55,7 @@ public class NPC_Dialogue : MonoBehaviour
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, dialogueRange, playerLayer);
 
-        if( hit != null)
+        if (hit != null)
         {
             playerHit = true;
         }

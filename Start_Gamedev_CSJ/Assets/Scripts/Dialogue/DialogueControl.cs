@@ -41,7 +41,7 @@ public class DialogueControl : MonoBehaviour
 
     IEnumerator TypeSentence()
     {
-        foreach(char letter in sentences[index].ToCharArray())
+        foreach (char letter in sentences[index].ToCharArray())
         {
             speechText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
@@ -50,9 +50,9 @@ public class DialogueControl : MonoBehaviour
 
     public void NextSentence()  //Pular para a próxima frase/fala
     {
-        if(speechText.text == sentences[index])
+        if (speechText.text == sentences[index])
         {
-            if(index < sentences.Length - 1)
+            if (index < sentences.Length - 1)
             {
                 index++;
                 speechText.text = "";
@@ -71,7 +71,7 @@ public class DialogueControl : MonoBehaviour
 
     public void Speech(string[] txt)  //Chamar a fala do NPC
     {
-        if(!isShowing)  //Enquanto estiver falando, não chama ação novamente
+        if (!isShowing)  //Enquanto estiver falando, não chama ação novamente
         {
             dialogueObj.SetActive(true);
             sentences = txt;

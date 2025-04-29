@@ -48,9 +48,9 @@ public class BuilderEditor : Editor
         s.profile = ds.speakerSprite;
         s.sentence = l;
 
-        if(GUILayout.Button("Create Dialogue"))
+        if (GUILayout.Button("Create Dialogue"))
         {
-            if(ds.sentence != "")
+            if (ds.sentence != "")
             {
                 ds.dialogues.Add(s);
 

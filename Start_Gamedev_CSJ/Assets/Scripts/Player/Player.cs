@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    
+
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
 
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
     }
     public bool isCutting  //Encapsulamento
     {
-        get { return _isCutting; } 
+        get { return _isCutting; }
         set { _isCutting = value; }
     }
     public Vector2 direction  //Encapsulamento
@@ -68,13 +68,13 @@ public class Player : MonoBehaviour
 
     void OnRun()
     {
-        if(Input.GetKeyDown(KeyCode.LeftShift))  //Se o Shift esquerdo é pressionado, a variável speed recebe o valor da variável runSpeed
+        if (Input.GetKeyDown(KeyCode.LeftShift))  //Se o Shift esquerdo é pressionado, a variável speed recebe o valor da variável runSpeed
         {
             speed = runSpeed;
             _isRunning = true;
         }
 
-        if(Input.GetKeyUp(KeyCode.LeftShift)) //Quando o Shift esquerdo é pressionado, a variável speed volta a receber o valor da variável initialSpeed
+        if (Input.GetKeyUp(KeyCode.LeftShift)) //Quando o Shift esquerdo é pressionado, a variável speed volta a receber o valor da variável initialSpeed
         {
             speed = initialSpeed;
             _isRunning = false;
@@ -83,13 +83,13 @@ public class Player : MonoBehaviour
 
     void OnRolling()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             speed = runSpeed;
             _isRolling = true;
         }
 
-        if(Input.GetMouseButtonUp(1))
+        if (Input.GetMouseButtonUp(1))
         {
             speed = initialSpeed;
             _isRolling = false;
@@ -98,13 +98,13 @@ public class Player : MonoBehaviour
 
     void OnCutting()
     {
-        if(Input.GetMouseButtonDown(0))  
+        if (Input.GetMouseButtonDown(0))
         {
             speed = 0;
             _isCutting = true;
         }
 
-        if(Input.GetMouseButtonUp(0)) 
+        if (Input.GetMouseButtonUp(0))
         {
             speed = initialSpeed;
             _isCutting = false;
