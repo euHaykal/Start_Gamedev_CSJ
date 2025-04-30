@@ -8341,10 +8341,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree
       objectReference: {fileID: 0}
-    - target: {fileID: 8265490312501794727, guid: 624ad9a656dbf07469da6e179e41d9cb, type: 3}
-      propertyPath: totalWood
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

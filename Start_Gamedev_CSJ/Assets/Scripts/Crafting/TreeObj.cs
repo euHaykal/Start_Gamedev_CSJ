@@ -9,11 +9,16 @@ public class TreeObj : MonoBehaviour
     [SerializeField] private GameObject woodPrefab;
     [SerializeField] private int totalWood;
 
+    [SerializeField] private ParticleSystem leafs;
+
+    private bool isCut = false;
+
     public void OnHit()
     {
         treeHealth--;
 
         anim.SetTrigger("isHit");
+        leafs.Play(); //play particle system
 
         if (treeHealth <= 0)
         {
@@ -23,12 +28,14 @@ public class TreeObj : MonoBehaviour
             }
 
             anim.SetTrigger("cut"); //drop da madeira
+
+            isCut = true; //seta a arvore como cortada
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Axe"))
+        if (collision.CompareTag("Axe") && !isCut)
         {
             OnHit();
         }
