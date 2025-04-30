@@ -7,12 +7,17 @@ public class Player : MonoBehaviour
     [SerializeField] private float runSpeed;
 
     private Rigidbody2D rig;
+    private PlayerItems playerItems; //Variável para acessar o script PlayerItems
 
     private float initialSpeed;
     private bool _isRunning;
     private bool _isRolling;
     private bool _isCutting;
+    private bool _isDiggin; //Variável para verificar se o jogador está cavando
+    private bool _isWatering; //Variável para verificar se o jogador está regando
     private Vector2 _direction;  //Encapsulamento
+
+    private int handlingObj = 1;
 
     public bool isRunning  //Encapsulamento
     {
@@ -29,6 +34,16 @@ public class Player : MonoBehaviour
         get { return _isCutting; }
         set { _isCutting = value; }
     }
+    public bool isDiggin  //Encapsulamento
+    {
+        get { return _isDiggin; }  //Pega o valor da váriável _isDiggin
+        set { _isDiggin = value; }  //Seta o valor da variável isDiggin para o mesmo da variável _isDiggin
+    }
+    public bool isWatering  //Encapsulamento
+    {
+        get { return _isWatering; }  //Pega o valor da váriável _isWatering
+        set { _isWatering = value; }  //Seta o valor da variável isWatering para o mesmo da variável _isWatering
+    }
     public Vector2 direction  //Encapsulamento
     {
         get { return _direction; }  //Pega o valor da váriável _direction
@@ -38,15 +53,31 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();  //No inicio da cena, o unity ira procurar pelo combonente Rigidbody2D no objeito personagem
+        playerItems = GetComponent<PlayerItems>(); //No inicio da cena, o unity ira procurar pelo combonente PlayerItems no objeito personagem
         initialSpeed = speed;
     }
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            handlingObj = 1; //Seta o objeto que o jogador está segurando como 1
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            handlingObj = 2; //Seta o objeto que o jogador está segurando como 2
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            handlingObj = 3; //Seta o objeto que o jogador está segurando como 3
+        }
+
         OnInput();
         OnRun();
         OnRolling();
         OnCutting();
+        OnDiggin();
+        OnWatering();
     }
 
     private void FixedUpdate() //Só utiliza para coisas com física
@@ -98,16 +129,60 @@ public class Player : MonoBehaviour
 
     void OnCutting()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (handlingObj == 1)
         {
-            speed = 0;
-            _isCutting = true;
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                speed = 0;
+                isCutting = true;
+            }
 
-        if (Input.GetMouseButtonUp(0))
+            if (Input.GetMouseButtonUp(0))
+            {
+                speed = initialSpeed;
+                isCutting = false;
+            }
+        }
+    }
+
+    void OnDiggin()
+    {
+        if (handlingObj == 2)
         {
-            speed = initialSpeed;
-            _isCutting = false;
+            if (Input.GetMouseButtonDown(0))
+            {
+                speed = 0;
+                isDiggin = true;
+            }
+
+            if (Input.GetMouseButtonUp(0))
+            {
+                speed = initialSpeed;
+                isDiggin = false;
+            }
+        }
+    }
+
+    void OnWatering()
+    {
+        if (handlingObj == 3)
+        {
+            if (Input.GetMouseButtonDown(0) && playerItems.currentWater > 0)
+            {
+                speed = 0;
+                isWatering = true;
+            }
+
+            if (Input.GetMouseButtonUp(0) || playerItems.currentWater <= 0) //Verifica se o jogador soltou o botão esquerdo do mouse ou se a quantidade de água do jogador é menor ou igual a 0
+            {
+                speed = initialSpeed;
+                isWatering = false;
+            }
+
+            if (isWatering) //Verifica se o jogador está regando
+            {
+                playerItems.currentWater -= 0.01f; //Diminui a quantidade de água do jogador
+            }
         }
     }
 
