@@ -5,10 +5,15 @@ public class PlayerAnim : MonoBehaviour
     private Player player;
     private Animator anim;
 
+    private Fishing fishing; //Variável para acessar o script Fishing
+
     void Start()
     {
         player = GetComponent<Player>();  //Permete a Unity a acessar o componente Player e pegar as informações do mesmo
         anim = GetComponent<Animator>();  //Permete a Unity a acessar o componente Animator e pegar as informações do mesmo
+
+        fishing = FindAnyObjectByType<Fishing>(); //Permite a Unity a acessar o script Fishing e pegar as informações do mesmo
+
     }
 
     void Update()
@@ -69,6 +74,22 @@ public class PlayerAnim : MonoBehaviour
         {
             anim.SetInteger("transition", 2);  //Animator transition = 2
         }
+    }
+
+    #endregion
+
+    #region Actions
+
+    public void OnFishingStarted() //É chamado quando o jogador começa a pescar
+    {
+        anim.SetTrigger("isFishing");
+        player.isMoving = true; //Desabilita o movimento do jogador enquanto ele pesca
+    }
+
+    public void OnFishingFinished()  //É chamado quando a animação de pescar termina
+    {
+        fishing.OnFishing(); //Chama a função OnFishing do script Fishing
+        player.isMoving = false; //Habilita o movimento do jogador após pescar
     }
 
     #endregion

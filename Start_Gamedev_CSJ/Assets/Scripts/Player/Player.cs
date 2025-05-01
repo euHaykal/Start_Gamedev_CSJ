@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [HideInInspector] public bool isMoving; //Variável para verificar se o jogador está se movendo
+
 
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
@@ -60,30 +62,36 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (!isMoving)
         {
-            handlingObj = 1; //Seta o objeto que o jogador está segurando como 1
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            handlingObj = 2; //Seta o objeto que o jogador está segurando como 2
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            handlingObj = 3; //Seta o objeto que o jogador está segurando como 3
-        }
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                handlingObj = 1; //Seta o objeto que o jogador está segurando como 1
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                handlingObj = 2; //Seta o objeto que o jogador está segurando como 2
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                handlingObj = 3; //Seta o objeto que o jogador está segurando como 3
+            }
 
-        OnInput();
-        OnRun();
-        OnRolling();
-        OnCutting();
-        OnDiggin();
-        OnWatering();
+            OnInput();
+            OnRun();
+            OnRolling();
+            OnCutting();
+            OnDiggin();
+            OnWatering();
+        }
     }
 
     private void FixedUpdate() //Só utiliza para coisas com física
     {
-        OnMove();
+        if (!isMoving)
+        {
+            OnMove();
+        }
     }
 
     #region Movement

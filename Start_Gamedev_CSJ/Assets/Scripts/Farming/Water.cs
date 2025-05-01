@@ -25,7 +25,6 @@ public class Water : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             detectingPlayer = true;
-            Debug.Log("Player detected in water area.");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,7 +32,6 @@ public class Water : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             detectingPlayer = false;
-            Debug.Log("Player exited water area.");
         }
     }
 

@@ -20,8 +20,29 @@ public class PlayerItems : MonoBehaviour
     [SerializeField] private float _carrotLimit;
     public float carrotLimit { get => _carrotLimit; set => _carrotLimit = value; } //Propriedade para acessar a variável _totalWater de fora da classe
 
+    [Header("Fishies")]
+    [SerializeField] private int _currentFishies; //Total de peixes que o jogador tem
+    public int currentFishies { get => _currentFishies; set => _currentFishies = value; } //Propriedade para acessar a variável _totalWater de fora da classe
+    [SerializeField] private float _fishiesLimit;
+    public float fishiesLimit { get => _fishiesLimit; set => _fishiesLimit = value; } //Propriedade para acessar a variável _totalWater de fora da classe
+
     public void WaterLimit(float water)
     {
         currentWater = Mathf.Min(currentWater + water, waterLimit);
+    }
+
+    public void WoodLimit(int wood)
+    {
+        currentWood = Mathf.Min(currentWood + wood, (int)woodLimit);
+    }
+
+    public void CarrotLimit(int carrots)
+    {
+        currentCarrots = Mathf.Min(currentCarrots + carrots, (int)carrotLimit);
+    }
+
+    public void FishiesLimit(int fishies)
+    {
+        currentFishies = Mathf.Min(currentFishies + fishies, (int)fishiesLimit);
     }
 }

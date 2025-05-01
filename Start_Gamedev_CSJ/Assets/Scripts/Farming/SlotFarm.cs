@@ -26,22 +26,29 @@ public class SlotFarm : MonoBehaviour
 
     private void Update()
     {
-        if (dugHole) //verifica se o jogador já cavou o buraco
+        if (dugHole) // verifica se o jogador já cavou o buraco
         {
             if (detectingPlayer)
             {
                 currentWater += 0.01f;
             }
 
-            if (currentWater >= waterAmount) //verifica se o jogador tem agua suficiente para plantar a cenoura
+            if (currentWater >= waterAmount) // verifica se o jogador tem água suficiente para plantar a cenoura
             {
-                spriteRenderer.sprite = carrot; //seta o sprite da cenoura
+                spriteRenderer.sprite = carrot; // seta o sprite da cenoura
 
-                if (Input.GetKeyDown(KeyCode.E)) //verifica se o jogador apertou a tecla E
+                if (Input.GetKeyDown(KeyCode.E)) // verifica se o jogador apertou a tecla E
                 {
-                    spriteRenderer.sprite = hole; //seta o sprite do buraco
-                    playerItems.currentCarrots++; //adiciona uma cenoura ao inventário do jogador
-                    currentWater = 0; //zera a quantidade de agua do jogador
+                    if (playerItems.currentCarrots < playerItems.carrotLimit) // verifica se o jogador tem espaço para mais cenouras
+                    {
+                        spriteRenderer.sprite = hole; // seta o sprite do buraco
+                        playerItems.CarrotLimit(1); // adiciona uma cenoura ao inventário do jogador
+                        currentWater = 0; // zera a quantidade de água do jogador
+                    }
+                    else
+                    {
+                        Debug.Log("Carrot limit reached! Item will remain in the scene."); // mensagem opcional
+                    }
                 }
             }
         }
