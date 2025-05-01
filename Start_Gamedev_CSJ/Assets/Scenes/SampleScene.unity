@@ -6688,6 +6688,8 @@ MonoBehaviour:
   _carrotLimit: 2
   _currentFishies: 0
   _fishiesLimit: 3
+  _fishingRangeMin: 0
+  _fishingRangeMax: -2.5
 --- !u!1 &863227024
 GameObject:
   m_ObjectHideFlags: 0

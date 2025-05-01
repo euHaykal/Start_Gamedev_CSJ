@@ -31,7 +31,7 @@ public class Fishing : MonoBehaviour
         if (randomValue <= percentageFish) //Se o valor aleatório for menor ou igual a 50, o jogador pega um peixe
         {
             Debug.Log("Fish caught!");
-            Instantiate(fishPrefab, player.transform.position + new Vector3(Random.Range(-2.5f, -0.5f), 0f, 0f), Quaternion.identity); //Instancia o prefab do peixe na posição do jogador
+            Instantiate(fishPrefab, player.transform.position + new Vector3(Random.Range(player.fishingRangeMax, player.fishingRangeMin), 0f, 0f), Quaternion.identity); //Instancia o prefab do peixe na posição do jogador
         }
         else
         {

@@ -25,6 +25,10 @@ public class PlayerItems : MonoBehaviour
     public int currentFishies { get => _currentFishies; set => _currentFishies = value; } //Propriedade para acessar a variável _totalWater de fora da classe
     [SerializeField] private float _fishiesLimit;
     public float fishiesLimit { get => _fishiesLimit; set => _fishiesLimit = value; } //Propriedade para acessar a variável _totalWater de fora da classe
+    [SerializeField] private float _fishingRangeMin = 1; // Valor mínimo do Random.Range
+    [SerializeField] private float _fishingRangeMax = 100; // Valor máximo do Random.Range
+    public float fishingRangeMin { get => _fishingRangeMin; set => _fishingRangeMin = value; }
+    public float fishingRangeMax { get => _fishingRangeMax; set => _fishingRangeMax = value; }
 
     public void WaterLimit(float water)
     {

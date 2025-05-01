@@ -9,30 +9,29 @@ public class Wood : MonoBehaviour
 
     void Update()
     {
-        timeCount += Time.deltaTime; //Acumula o tempo que passou desde o último frame
+        timeCount += Time.deltaTime;
 
-        if (timeCount < timeMove) //Se o tempo acumulado for menor ao tempo de movimento
+        if (timeCount < timeMove)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime); //Move o objeto para a direita
+            transform.Translate(Vector2.right * speed * Time.deltaTime); // Move na direção definida
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) //Se o objeto colidir com o jogador
+        if (collision.CompareTag("Player")) // Se o objeto colidir com o jogador
         {
             PlayerItems playerItems = collision.GetComponent<PlayerItems>();
 
-            if (playerItems.currentWood < playerItems.woodLimit) //Verifica se o jogador ainda pode pegar mais madeira
+            if (playerItems.currentWood < playerItems.woodLimit) // Verifica se o jogador ainda pode pegar mais madeira
             {
-                playerItems.WoodLimit(1); //Adiciona 1 madeira respeitando o limite
-                Destroy(gameObject); //Destrói o objeto
+                playerItems.WoodLimit(1); // Adiciona 1 madeira respeitando o limite
+                Destroy(gameObject); // Destrói o objeto
             }
             else
             {
-                Debug.Log("Wood limit reached! Item will remain in the scene."); //Mensagem opcional
+                Debug.Log("Wood limit reached! Item will remain in the scene."); // Mensagem opcional
             }
         }
     }
-
 }
