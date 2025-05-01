@@ -5,6 +5,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float runSpeed;
+    [SerializeField] private float waterSpent;
 
     private Rigidbody2D rig;
     private PlayerItems playerItems; //Variável para acessar o script PlayerItems
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     private bool _isWatering; //Variável para verificar se o jogador está regando
     private Vector2 _direction;  //Encapsulamento
 
-    private int handlingObj = 1;
+    [HideInInspector] public int handlingObj = 1;
 
     public bool isRunning  //Encapsulamento
     {
@@ -181,7 +182,7 @@ public class Player : MonoBehaviour
 
             if (isWatering) //Verifica se o jogador está regando
             {
-                playerItems.currentWater -= 0.01f; //Diminui a quantidade de água do jogador
+                playerItems.currentWater -= waterSpent; //Diminui a quantidade de água do jogador
             }
         }
     }

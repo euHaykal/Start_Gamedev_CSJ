@@ -21,7 +21,7 @@ public class Wood : MonoBehaviour
     {
         if (collision.CompareTag("Player")) //Se o objeto colidir com o jogador
         {
-            collision.GetComponent<PlayerItems>().totalWood++; //Aumenta o total de madeira do jogador
+            collision.GetComponent<PlayerItems>().currentWood++; //Aumenta o total de madeira do jogador
             Destroy(gameObject); //Destrói o objeto
         }
     }
