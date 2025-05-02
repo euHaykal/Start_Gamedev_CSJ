@@ -92,6 +92,17 @@ public class PlayerAnim : MonoBehaviour
         player.isMoving = false; //Habilita o movimento do jogador após pescar
     }
 
+    public void OnHammeringStarted()
+    {
+        anim.SetBool("isHammering", true); //Inicia a animação de martelar
+    }
+
+    public void OnHammeringFinished()
+    {
+        anim.SetBool("isHammering", false); //Para a animação de martelar
+    }
+
+
     #endregion
 
 }
