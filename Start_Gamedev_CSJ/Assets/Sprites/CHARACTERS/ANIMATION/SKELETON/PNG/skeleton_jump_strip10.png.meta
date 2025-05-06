@@ -64,7 +64,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +78,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +102,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -143,10 +143,10 @@ TextureImporter:
       name: skeleton_jump_strip10_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 23
-        width: 15
-        height: 18
+        x: 0
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,10 +165,10 @@ TextureImporter:
       name: skeleton_jump_strip10_1
       rect:
         serializedVersion: 2
-        x: 136
-        y: 23
-        width: 17
-        height: 15
+        x: 96
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,10 +187,10 @@ TextureImporter:
       name: skeleton_jump_strip10_2
       rect:
         serializedVersion: 2
-        x: 233
-        y: 23
-        width: 15
-        height: 18
+        x: 192
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,10 +209,10 @@ TextureImporter:
       name: skeleton_jump_strip10_3
       rect:
         serializedVersion: 2
-        x: 329
-        y: 24
-        width: 15
-        height: 18
+        x: 288
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: skeleton_jump_strip10_4
       rect:
         serializedVersion: 2
-        x: 424
-        y: 25
-        width: 17
-        height: 17
+        x: 384
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,10 +253,10 @@ TextureImporter:
       name: skeleton_jump_strip10_5
       rect:
         serializedVersion: 2
-        x: 520
-        y: 26
-        width: 17
-        height: 16
+        x: 480
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -275,10 +275,10 @@ TextureImporter:
       name: skeleton_jump_strip10_6
       rect:
         serializedVersion: 2
-        x: 616
-        y: 24
-        width: 17
-        height: 18
+        x: 576
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -297,10 +297,10 @@ TextureImporter:
       name: skeleton_jump_strip10_7
       rect:
         serializedVersion: 2
-        x: 712
-        y: 23
-        width: 17
-        height: 12
+        x: 672
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -319,10 +319,10 @@ TextureImporter:
       name: skeleton_jump_strip10_8
       rect:
         serializedVersion: 2
-        x: 808
-        y: 23
-        width: 17
-        height: 15
+        x: 768
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -341,10 +341,10 @@ TextureImporter:
       name: skeleton_jump_strip10_9
       rect:
         serializedVersion: 2
-        x: 905
-        y: 23
-        width: 15
-        height: 18
+        x: 864
+        y: 0
+        width: 96
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,7 +363,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d805586a0b70006478ef436875cb80a6
     internalID: 0
     vertices: []
     indices: 
@@ -372,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      skeleton_jump_strip10_0: 6462343561323646826
+      skeleton_jump_strip10_1: -5575376104750891086
+      skeleton_jump_strip10_2: -1786197925460225138
+      skeleton_jump_strip10_3: -1627637044054144003
+      skeleton_jump_strip10_4: 6402419502516914558
+      skeleton_jump_strip10_5: 7986771967673304479
+      skeleton_jump_strip10_6: 528616509822466745
+      skeleton_jump_strip10_7: -7664752260412574753
+      skeleton_jump_strip10_8: 6413401834285617965
+      skeleton_jump_strip10_9: 3214948270850175573
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
