@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -83,6 +84,11 @@ public class Player : MonoBehaviour
             OnCutting();
             OnDiggin();
             OnWatering();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("teste");
         }
     }
 
