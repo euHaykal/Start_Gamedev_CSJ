@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour
 {
+    [Header("Attack Settings")]
+    [SerializeField] private Transform attackPoint; //Ponto de ataque do jogador
+    [SerializeField] private float attackRange; //Raio de ataque do jogador
+    [SerializeField] private LayerMask enemyLayer; //Camada de inimigos
+    [SerializeField] private float revoceryTime;
+
+    private bool isHitting;
+    private float timeCount;
+
     private Player player;
     private Animator anim;
 
@@ -20,6 +29,16 @@ public class PlayerAnim : MonoBehaviour
     {
         OnMove();
         OnRun();
+
+        if (isHitting)
+        {
+            timeCount += Time.deltaTime; //Contador de tempo para o tempo de recuperação do jogador após ser atingido
+            if (timeCount >= revoceryTime) //Verifica se o jogador foi atingido e se o tempo de recuperação já passou
+            {
+                isHitting = false; //Reabilita a animação de ser atingido
+                timeCount = 0; //Reseta o contador de tempo
+            }
+        }
     }
 
     #region Movement
@@ -102,6 +121,34 @@ public class PlayerAnim : MonoBehaviour
         anim.SetBool("isHammering", false); //Para a animação de martelar
     }
 
+    #endregion
+
+    #region Attack
+
+    public void OnHit()
+    {
+        if (!isHitting)
+        {
+            anim.SetTrigger("isHit"); //Inicia a animação de ser atingido
+            isHitting = true; //Desabilita a animação de ser atingido
+        }
+    }
+
+    public void OnAttack()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(attackPoint.position, attackRange, enemyLayer); //Verifica se o jogador está atacando um inimigo
+
+        if (hit != null) //Verifica se o jogador está atacando um inimigo
+        {
+            //ataca o inimigo
+            hit.GetComponentInChildren<SkeletonAnim>().OnHit(); //Chama a função OnHit do script SkeletonAnim
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
 
     #endregion
 

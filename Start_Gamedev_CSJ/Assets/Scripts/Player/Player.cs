@@ -111,13 +111,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))  //Se o Shift esquerdo é pressionado, a variável speed recebe o valor da variável runSpeed
         {
             speed = runSpeed;
-            _isRunning = true;
+            isRunning = true;
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift)) //Quando o Shift esquerdo é pressionado, a variável speed volta a receber o valor da variável initialSpeed
         {
             speed = initialSpeed;
-            _isRunning = false;
+            isRunning = false;
         }
     }
 
@@ -126,13 +126,13 @@ public class Player : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             speed = runSpeed;
-            _isRolling = true;
+            isRolling = true;
         }
 
         if (Input.GetMouseButtonUp(1))
         {
             speed = initialSpeed;
-            _isRolling = false;
+            isRolling = false;
         }
     }
 
