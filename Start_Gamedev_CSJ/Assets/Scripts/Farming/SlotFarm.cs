@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class SlotFarm : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip holeSFX;
+    [SerializeField] private AudioClip carrotSFX;
+
     [Header("Components")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite hole;
@@ -15,6 +20,8 @@ public class SlotFarm : MonoBehaviour
     private int initialDigAmount; //quantidade inicial de buracos que o jogador pode cavar
     private float currentWater;
     private bool dugHole;
+    private bool plantedCarrot;
+    private bool carrotCollected; //verifica se o jogador coletou a cenoura
 
     PlayerItems playerItems;
 
@@ -33,22 +40,29 @@ public class SlotFarm : MonoBehaviour
                 currentWater += 0.01f;
             }
 
-            if (currentWater >= waterAmount) // verifica se o jogador tem água suficiente para plantar a cenoura
+            if (currentWater >= waterAmount && !plantedCarrot) // verifica se o jogador tem água suficiente para plantar a cenoura
             {
+                audioSource.PlayOneShot(holeSFX); // toca o som do buraco
                 spriteRenderer.sprite = carrot; // seta o sprite da cenoura
 
-                if (Input.GetKeyDown(KeyCode.E)) // verifica se o jogador apertou a tecla E
+                carrotCollected = false; // Reseta a variável para permitir replantar
+                plantedCarrot = true; // seta a variável de cenoura plantada como true
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && plantedCarrot && !carrotCollected) // verifica se o jogador apertou a tecla E
+            {
+                if (playerItems.currentCarrots < playerItems.carrotLimit) // verifica se o jogador tem espaço para mais cenouras
                 {
-                    if (playerItems.currentCarrots < playerItems.carrotLimit) // verifica se o jogador tem espaço para mais cenouras
-                    {
-                        spriteRenderer.sprite = hole; // seta o sprite do buraco
-                        playerItems.CarrotLimit(1); // adiciona uma cenoura ao inventário do jogador
-                        currentWater = 0; // zera a quantidade de água do jogador
-                    }
-                    else
-                    {
-                        Debug.Log("Carrot limit reached! Item will remain in the scene."); // mensagem opcional
-                    }
+                    audioSource.PlayOneShot(carrotSFX);
+                    spriteRenderer.sprite = hole;
+                    playerItems.CarrotLimit(1);
+                    currentWater = 0;
+                    carrotCollected = true; // Resetar as variáveis para permitir novo plantio
+                    plantedCarrot = false; // Não resetamos dugHole aqui para manter o buraco cavado
+                }
+                else
+                {
+                    Debug.Log("Carrot limit reached! Item will remain in the scene."); // mensagem opcional
                 }
             }
         }
@@ -60,14 +74,12 @@ public class SlotFarm : MonoBehaviour
 
         if (digAmount <= initialDigAmount / 2)
         {
-            spriteRenderer.sprite = hole; //seta o sprite do buraco
-            dugHole = true; //seta a variavel de buraco como true
+            spriteRenderer.sprite = hole; // Seta o sprite do buraco
+            dugHole = true; // Marca o buraco como cavado
+            carrotCollected = false; // Reseta a variável para permitir replantar
+            plantedCarrot = false; // Reseta o estado de cenoura plantada
+            currentWater = 0; // Reseta a água
         }
-
-        // if (digAmount <= 0)
-        // {
-        //     spriteRenderer.sprite = carrot; //seta o sprite da cenoura
-        // }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
