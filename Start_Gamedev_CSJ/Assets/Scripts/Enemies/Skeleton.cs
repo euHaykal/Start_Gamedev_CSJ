@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Skeleton : MonoBehaviour
 {
     [Header("Stats")]
+    public float followRange;
     public float maxHealth;
     public float currentHealth;
     public Image healthBar;
@@ -15,9 +16,11 @@ public class Skeleton : MonoBehaviour
     [Header("Components")]
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private SkeletonAnim animControl;
+    [SerializeField] private LayerMask playerLayer;
 
 
     private Player player;
+    private bool detectingPlayer;
 
     private void Start()
     {
@@ -29,8 +32,9 @@ public class Skeleton : MonoBehaviour
 
     private void Update()
     {
-        if (!isDead)
+        if (!isDead && detectingPlayer)
         {
+            agent.isStopped = false;
             agent.SetDestination(player.transform.position);
 
             if (Vector2.Distance(transform.position, player.transform.position) <= agent.stoppingDistance)
@@ -55,6 +59,34 @@ public class Skeleton : MonoBehaviour
                 transform.eulerAngles = new Vector2(0, 0);
             }
         }
+    }
+
+    private void FixedUpdate()
+    {
+        DetectPlayer();
+    }
+
+    public void DetectPlayer()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, followRange, playerLayer);
+        if (hit != null)
+        {
+            // player está dentro do range
+            detectingPlayer = true;
+        }
+        else
+        {
+            // player está fora do range
+            detectingPlayer = false;
+            animControl.PlayAnim(0);
+            agent.isStopped = true;
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, followRange);
     }
 
 }
