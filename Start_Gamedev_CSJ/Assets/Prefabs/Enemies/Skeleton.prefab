@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPoint: {fileID: 3822202437193427808}
-  attackRange: 0.31
+  attackRange: 0.3
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -647,12 +647,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6134baab05e78458461c631863d5dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followRange: 3
   maxHealth: 3
   currentHealth: 0
   healthBar: {fileID: 8787916534342028907}
   isDead: 0
   agent: {fileID: 5144821069669684054}
   animControl: {fileID: 5735159092894460116}
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!195 &5144821069669684054
 NavMeshAgent:
   m_ObjectHideFlags: 0

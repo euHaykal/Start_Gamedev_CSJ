@@ -12,19 +12,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eeb59a3926daf0458e0d0e00caf6701, type: 3}
   m_Name: NPC_1
   m_EditorClassIdentifier: 
-  actor: {fileID: 0}
+  actor: {fileID: 496833982693010301, guid: 961d0b2b3f51e0c4cb838f9501f2b348, type: 3}
   speakerSprite: {fileID: 0}
   sentence: 
   dialogues:
   - actorName: Claudete
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 8eae76d154700334c8ad82d1bd28f844, type: 3}
     sentence:
       portuguese: "Ol\xE1, tudo bem?"
       english: Hello, how are you?
       spanish: "Hola, \xBFc\xF3mo est\xE1s?"
   - actorName: Claudete
-    profile: {fileID: 0}
+    profile: {fileID: 21300000, guid: 8eae76d154700334c8ad82d1bd28f844, type: 3}
     sentence:
       portuguese: "O dia est\xE1 lindo, n\xE3o?!"
+      english: This's a beautiful day, right?
+      spanish: "\xA1El d\xEDa es hermoso, \xBFno?!"
+  - actorName: "Her\xF3i"
+    profile: {fileID: -3275984221689208128, guid: f9700172a4fa5b140ad74fdb0ef0c1c3, type: 3}
+    sentence:
+      portuguese: Zap
       english: This's a beautiful day, right?
       spanish: "\xA1El d\xEDa es hermoso, \xBFno?!"

@@ -28,6 +28,8 @@ public class DialogueControl : MonoBehaviour
     private bool isShowing;  //Se a janela está visível
     private int index;  //Index das sentenças
     private string[] sentences;
+    private string[] currentActorName;
+    private Sprite[] actorSprite;
 
     public bool IsShowing { get => isShowing; set => isShowing = value; }
     #endregion
@@ -55,12 +57,15 @@ public class DialogueControl : MonoBehaviour
             if (index < sentences.Length - 1)
             {
                 index++;
+                profileSprite.sprite = actorSprite[index];
+                actorNameText.text = currentActorName[index];
                 speechText.text = "";
                 StartCoroutine(TypeSentence());
             }
             else  //Quando terminar os textos
             {
                 speechText.text = "";
+                actorNameText.text = "";
                 index = 0;
                 dialogueObj.SetActive(false);
                 sentences = null;
@@ -69,12 +74,16 @@ public class DialogueControl : MonoBehaviour
         }
     }
 
-    public void Speech(string[] txt)  //Chamar a fala do NPC
+    public void Speech(string[] txt, string[] actorName, Sprite[] actorProfile)  //Chamar a fala do NPC
     {
         if (!isShowing)  //Enquanto estiver falando, não chama ação novamente
         {
             dialogueObj.SetActive(true);
             sentences = txt;
+            currentActorName = actorName;
+            actorSprite = actorProfile;
+            profileSprite.sprite = actorSprite[index];
+            actorNameText.text = currentActorName[index];
             StartCoroutine(TypeSentence());
             isShowing = true;
         }
