@@ -22,6 +22,7 @@ public class SlotFarm : MonoBehaviour
     private bool dugHole;
     private bool plantedCarrot;
     private bool carrotCollected; //verifica se o jogador coletou a cenoura
+    private bool isPlayer; //Fica verdadeiro enquanto o player está enconstando na cenoura
 
     PlayerItems playerItems;
 
@@ -49,7 +50,7 @@ public class SlotFarm : MonoBehaviour
                 plantedCarrot = true; // seta a variável de cenoura plantada como true
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && plantedCarrot && !carrotCollected) // verifica se o jogador apertou a tecla E
+            if (Input.GetKeyDown(KeyCode.E) && plantedCarrot && !carrotCollected && isPlayer) // verifica se o jogador apertou a tecla E
             {
                 if (playerItems.currentCarrots < playerItems.carrotLimit) // verifica se o jogador tem espaço para mais cenouras
                 {
@@ -93,6 +94,11 @@ public class SlotFarm : MonoBehaviour
         {
             detectingPlayer = true; //verifica se o jogador está na área de detecção do buraco
         }
+        if (collision.CompareTag("Player"))
+        {
+            isPlayer = true; //verifica se o jogador está na área de detecção do buraco
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -100,6 +106,10 @@ public class SlotFarm : MonoBehaviour
         if (collision.CompareTag("WateringCan"))
         {
             detectingPlayer = false; //verifica se o jogador saiu da área de detecção do buraco
+        }
+        if (collision.CompareTag("Player"))
+        {
+            isPlayer = false; //verifica se o jogador está fora da área de detecção do buraco
         }
     }
 }
