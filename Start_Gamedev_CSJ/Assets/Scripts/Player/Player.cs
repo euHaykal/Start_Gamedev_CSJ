@@ -158,6 +158,10 @@ public class Player : MonoBehaviour
                 isCutting = false;
             }
         }
+        else
+        {
+            isCutting = false; //Se o jogador não estiver cortando, a variável isCutting volta a ser falsa
+        }
     }
 
     void OnDiggin()
@@ -175,6 +179,10 @@ public class Player : MonoBehaviour
                 speed = initialSpeed;
                 isDiggin = false;
             }
+        }
+        else
+        {
+            isDiggin = false; //Se o jogador não estiver cavando, a variável isDiggin volta a ser falsa
         }
     }
 
@@ -198,6 +206,10 @@ public class Player : MonoBehaviour
             {
                 playerItems.currentWater -= waterSpent; //Diminui a quantidade de água do jogador
             }
+        }
+        else
+        {
+            isWatering = false; //Se o jogador não estiver regando, a variável isWatering volta a ser falsa
         }
     }
 

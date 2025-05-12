@@ -31,6 +31,8 @@ public class DialogueControl : MonoBehaviour
     private string[] currentActorName;
     private Sprite[] actorSprite;
 
+    private Player player;
+
     public bool IsShowing { get => isShowing; set => isShowing = value; }
     #endregion
 
@@ -38,7 +40,12 @@ public class DialogueControl : MonoBehaviour
 
     private void Awake()  //Chamado antes de todos os Starts() na hierarquia de execução de Scripts
     {
-        instance = this;  //
+        instance = this;
+    }
+
+    private void Start()
+    {
+        player = FindAnyObjectByType<Player>();  //Permite a Unity a acessar o componente Player e pegar as informações do mesmo
     }
 
     IEnumerator TypeSentence()
@@ -70,6 +77,7 @@ public class DialogueControl : MonoBehaviour
                 dialogueObj.SetActive(false);
                 sentences = null;
                 isShowing = false;
+                player.isMoving = false;  //Habilita o movimento do jogador
             }
         }
     }
@@ -86,6 +94,7 @@ public class DialogueControl : MonoBehaviour
             actorNameText.text = currentActorName[index];
             StartCoroutine(TypeSentence());
             isShowing = true;
+            player.isMoving = true;  //Desabilita o movimento do jogador
         }
     }
 
